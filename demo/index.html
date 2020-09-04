@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>📐 scale-pixels demo</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="canvas-wrapper">
+        <canvas id="canvas"></canvas>
+      </div>
+
+      <div>
+        <div class="action-bar">
+          <input id="file-input" type="file" accept="image/*" />
+          <button id="cat-button">Load example cat!</button>
+        </div>
+        <div class="action-bar">
+          <label for="to-input"><pre>to:</pre></label>
+          <input id="to-input" type="number" disabled />
+          <label for="from-input"><pre>from:</pre></label>
+          <input id="from-input" type="number" disabled />
+          <label for="color-diff-input"><pre>maxColorDiff:</pre></label>
+          <input id="color-diff-input" type="number" disabled />
+          <button id="detect-scale-button" disabled>Detect</button>
+          <button id="scale-button" disabled>Scale</button>
+        </div>
+        <pre id="scale-info"></pre>
+      </div>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>

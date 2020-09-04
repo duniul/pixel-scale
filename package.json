@@ -1,0 +1,64 @@
+{
+  "name": "pixel-scale",
+  "version": "1.0.0",
+  "description": "Get the pixel scale of an image, or scale it up or down without quality loss. Useful for pixel art!",
+  "author": "Daniel Grefberg <hello@danielgrefberg.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duniul/pixel-scale.git"
+  },
+  "homepage": "https://github.com/duniul/pixel-scale#readme",
+  "bugs": {
+    "url": "https://github.com/duniul/pixel-scale/issues"
+  },
+  "keywords": [
+    "image",
+    "image-data",
+    "image-editing",
+    "image-resize",
+    "pixel-art",
+    "canvas"
+  ],
+  "main": "lib/cjs/index.js",
+  "module": "lib/es/index.js",
+  "files": [
+    "lib/**"
+  ],
+  "scripts": {
+    "build": "rimraf lib && yarn build:es && yarn build:cjs",
+    "build:es": "tsc --outDir lib/es --module es6",
+    "build:cjs": "tsc --outDir lib/cjs --module commonjs",
+    "dev": "rimraf lib && yarn build:es --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "prepare": "yarn build",
+    "release": "semantic-release"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@canvas/image-data": "1.0.0",
+    "@commitlint/cli": "9.1.2",
+    "@commitlint/config-conventional": "9.1.2",
+    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/git": "9.0.0",
+    "@types/jest": "26.0.10",
+    "@types/sharp": "0.25.1",
+    "@typescript-eslint/eslint-plugin": "3.10.1",
+    "@typescript-eslint/parser": "3.10.1",
+    "commitizen": "4.2.1",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "7.8.1",
+    "eslint-config-acast": "4.7.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "husky": "4.2.5",
+    "jest": "26.4.2",
+    "lerna": "3.22.1",
+    "lint-staged": "10.2.13",
+    "prettier": "2.1.1",
+    "semantic-release": "17.1.1",
+    "sharp": "0.26.0",
+    "ts-jest": "26.3.0",
+    "typescript": "4.0.2"
+  }
+}

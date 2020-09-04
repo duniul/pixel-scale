@@ -1,0 +1,13 @@
+{
+  "extends": ["acast", "acast/typescript", "acast/jest"],
+  "overrides": [
+    {
+      "files": "*.test.*",
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-non-null-assertion": "off"
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "scale-pixels-demo",
+  "version": "1.0.0",
+  "description": "Demo application for scale-pixels.",
+  "author": "Daniel Grefberg <hello@danielgrefberg.com>",
+  "private": true,
+  "license": "ISC",
+  "main": "index.html",
+  "scripts": {
+    "dev": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "browserslist": [
+    "last 2 Chrome major versions",
+    "last 2 Firefox major versions",
+    "last 2 Edge major versions",
+    "last 2 Safari major versions"
+  ],
+  "dependencies": {
+    "scale-pixels": "link:.."
+  },
+  "devDependencies": {
+    "@babel/core": "7.11.5",
+    "parcel-bundler": "1.12.4"
+  }
+}

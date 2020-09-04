@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "module": "commonjs",
+    "target": "es6",
+    "lib": ["ES2019", "DOM", "ES6", "DOM.Iterable", "ScriptHost"],
+    "moduleResolution": "node",
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "declaration": true
+  },
+  "include": ["./src"],
+  "exclude": ["**/*.test.*"]
+}
