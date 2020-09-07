@@ -90,8 +90,8 @@ Get the current pixel scale of an image.
 
     As an example,
     [this Metal Slug image](https://github.com/duniul/pixel-scale/blob/master/test/images/metal-slug_x24.png)
-    actually has a pixel scale of 24, but since it has been incorrectly resized and contains some
-    miscolored lines between it's scaled pixels it would be detected as having a scale of 1 unless
+    has a pixel scale of 24, but since it has been incorrectly resized and contains some
+    miscolored lines between its scaled pixels it would be detected as having a scale of 1 unless
     the `maxColorDiff` is increased.
 
 **Return value:**
