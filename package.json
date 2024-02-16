@@ -12,6 +12,7 @@
   "bugs": {
     "url": "https://github.com/duniul/pixel-scale/issues"
   },
+  "packageManager": "pnpm@8.14.3",
   "keywords": [
     "image",
     "image-data",
@@ -26,13 +27,13 @@
     "lib/**"
   ],
   "scripts": {
-    "build": "rimraf lib && yarn build:es && yarn build:cjs",
+    "build": "rimraf lib && pnpm build:es && pnpm build:cjs",
     "build:es": "tsc --outDir lib/es --module es6",
     "build:cjs": "tsc --outDir lib/cjs --module commonjs",
     "dev": "rimraf lib && yarn build:es --watch",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepare": "yarn build",
+    "prepublishOnly": "pnpm build",
     "release": "semantic-release"
   },
   "dependencies": {},
