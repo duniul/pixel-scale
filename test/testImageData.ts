@@ -1,11 +1,12 @@
-import ImageData from '@canvas/image-data';
+import IsomorphicImageData from '@canvas/image-data';
+import path from 'node:path';
 import sharp from 'sharp';
-import path from 'path';
 
-async function getTestImageData(imageName: string) {
+async function getTestImageData(imageName: string): Promise<ImageData> {
   const src = path.resolve(__dirname, 'images', imageName);
   const image = await sharp(src).raw().ensureAlpha().toBuffer({ resolveWithObject: true });
-  return new ImageData(new Uint8ClampedArray(image.data), image.info.width, image.info.height);
+  const imageData = new IsomorphicImageData(new Uint8ClampedArray(image.data), image.info.width, image.info.height);
+  return imageData as ImageData;
 }
 
 export const getPixelTheCatScale1 = () => getTestImageData('pixel-the-cat_x1.png');

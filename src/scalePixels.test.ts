@@ -1,4 +1,5 @@
-import ImageData from '@canvas/image-data';
+import IsomorphicImageData from '@canvas/image-data';
+import { beforeAll, expect, it } from 'vitest';
 import {
   getPixelTheCatScale1,
   getPixelTheCatScale32,
@@ -6,7 +7,7 @@ import {
 } from '../test/testImageData';
 import { scalePixels } from './scalePixels';
 
-global.ImageData = ImageData;
+global.ImageData = IsomorphicImageData as any;
 
 let pixelScale1: ImageData;
 let pixelScale5: ImageData;
@@ -19,8 +20,8 @@ beforeAll(async () => {
 });
 
 it('upscales pixels', async () => {
-  let expected;
-  let result;
+  let expected: ImageData;
+  let result: ImageData;
 
   // x1 to x5
   expected = pixelScale5;
@@ -48,8 +49,8 @@ it('upscales pixels', async () => {
 });
 
 it('downscales pixels', async () => {
-  let expected;
-  let result;
+  let expected: ImageData;
+  let result: ImageData;
 
   // x32 to x5
   expected = pixelScale5;

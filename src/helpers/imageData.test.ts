@@ -1,4 +1,5 @@
 import ImageData from '@canvas/image-data';
+import { describe, expect, it } from 'vitest';
 import { isValidImageData } from './imageData';
 
 describe('isValidImageData', () => {

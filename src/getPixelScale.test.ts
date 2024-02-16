@@ -1,3 +1,4 @@
+import { beforeAll, expect, it } from 'vitest';
 import { getPixelScale } from '.';
 import {
   getPixelTheCatScale1,

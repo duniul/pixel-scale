@@ -31,8 +31,7 @@
     "build:es": "tsc --outDir lib/es --module es6",
     "build:cjs": "tsc --outDir lib/cjs --module commonjs",
     "dev": "rimraf lib && yarn build:es --watch",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "vitest",
     "prepublishOnly": "pnpm build",
     "lint": "biome check src",
     "lint:fix": "biome check --apply src",
@@ -43,15 +42,13 @@
     "@biomejs/biome": "^1.5.3",
     "@canvas/image-data": "1.0.0",
     "@changesets/cli": "^2.27.1",
-    "@types/jest": "26.0.10",
     "@types/sharp": "^0.31.1",
     "changesets-changelog-clean": "^1.2.1",
     "husky": "^9.0.11",
-    "jest": "26.4.2",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "sharp": "0.33.2",
-    "ts-jest": "26.3.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
   }
 }

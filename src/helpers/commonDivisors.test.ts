@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { findCommonDivisors, findGCD } from './commonDivisors';
 
 interface Sample {
@@ -25,7 +26,7 @@ describe('findGCD', () => {
       return [a, b, expectedGcd];
     });
 
-    test.each(tests)('findGCD(%p, %p) = %p', (a, b, expected) => {
+    it.each(tests)('findGCD(%i, %i) = %i', (a, b, expected) => {
       expect(findGCD(a, b)).toEqual(expected);
     });
   });
@@ -38,7 +39,7 @@ describe('findCommonDivisors', () => {
       return [a, b, divisors];
     });
 
-    test.each(tests)('findCommonDivisors(%p, %p) = %p', (a, b, expected) => {
+    it.each(tests)('findCommonDivisors(%i, %i) = %i', (a, b, expected) => {
       expect(findCommonDivisors(a, b)).toEqual(expected);
     });
   });
