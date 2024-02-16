@@ -21,16 +21,14 @@
     "pixel-art",
     "canvas"
   ],
-  "main": "lib/cjs/index.js",
-  "module": "lib/es/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "files": [
-    "lib/**"
+    "dist/**"
   ],
   "scripts": {
-    "build": "rimraf lib && pnpm build:es && pnpm build:cjs",
-    "build:es": "tsc --outDir lib/es --module es6",
-    "build:cjs": "tsc --outDir lib/cjs --module commonjs",
-    "dev": "rimraf lib && yarn build:es --watch",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "test": "vitest",
     "prepublishOnly": "pnpm build",
     "lint": "biome check src",
@@ -42,12 +40,14 @@
     "@biomejs/biome": "^1.5.3",
     "@canvas/image-data": "1.0.0",
     "@changesets/cli": "^2.27.1",
+    "@tsconfig/node14": "^14.1.0",
     "@types/sharp": "^0.31.1",
     "changesets-changelog-clean": "^1.2.1",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "sharp": "0.33.2",
+    "tsup": "^8.0.2",
     "typescript": "^5.3.3",
     "vitest": "^1.2.2"
   }
