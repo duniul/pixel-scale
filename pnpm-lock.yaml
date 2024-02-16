@@ -40,10 +40,10 @@ devDependencies:
     version: 0.33.2
   ts-jest:
     specifier: 26.3.0
-    version: 26.3.0(jest@26.4.2)(typescript@4.0.2)
+    version: 26.3.0(jest@26.4.2)(typescript@5.3.3)
   typescript:
-    specifier: 4.0.2
-    version: 4.0.2
+    specifier: ^5.3.3
+    version: 5.3.3
 
 packages:
 
@@ -5196,7 +5196,7 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /ts-jest@26.3.0(jest@26.4.2)(typescript@4.0.2):
+  /ts-jest@26.3.0(jest@26.4.2)(typescript@5.3.3):
     resolution: {integrity: sha512-Jq2uKfx6bPd9+JDpZNMBJMdMQUC3sJ08acISj8NXlVgR2d5OqslEHOR2KHMgwymu8h50+lKIm0m0xj/ioYdW2Q==}
     engines: {node: '>= 10'}
     hasBin: true
@@ -5215,7 +5215,7 @@ packages:
       make-error: 1.3.6
       mkdirp: 1.0.4
       semver: 7.6.0
-      typescript: 4.0.2
+      typescript: 5.3.3
       yargs-parser: 18.1.3
     dev: true
 
@@ -5313,9 +5313,9 @@ packages:
       is-typedarray: 1.0.0
     dev: true
 
-  /typescript@4.0.2:
-    resolution: {integrity: sha512-e4ERvRV2wb+rRZ/IQeb3jm2VxBsirQLpQhdxplZ2MEzGvDkkMmPglecnNDfSUBivMjP93vRbngYYDQqQ/78bcQ==}
-    engines: {node: '>=4.2.0'}
+  /typescript@5.3.3:
+    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
+    engines: {node: '>=14.17'}
     hasBin: true
     dev: true
 
