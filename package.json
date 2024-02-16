@@ -44,7 +44,7 @@
     "@canvas/image-data": "1.0.0",
     "@changesets/cli": "^2.27.1",
     "@types/jest": "26.0.10",
-    "@types/sharp": "0.25.1",
+    "@types/sharp": "^0.31.1",
     "changesets-changelog-clean": "^1.2.1",
     "husky": "^9.0.11",
     "jest": "26.4.2",

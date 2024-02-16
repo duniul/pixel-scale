@@ -18,8 +18,8 @@ devDependencies:
     specifier: 26.0.10
     version: 26.0.10
   '@types/sharp':
-    specifier: 0.25.1
-    version: 0.25.1
+    specifier: ^0.31.1
+    version: 0.31.1
   changesets-changelog-clean:
     specifier: ^1.2.1
     version: 1.2.1
@@ -1256,8 +1256,8 @@ packages:
     resolution: {integrity: sha512-/wdoPq1QqkSj9/QOeKkFquEuPzQbHTWAMPH/PaUMB+JuR31lXhlWXRZ52IpfDYVlDOUBvX09uBrPwxGT1hjNBg==}
     dev: true
 
-  /@types/sharp@0.25.1:
-    resolution: {integrity: sha512-qv9kr1RIad4nZIiIEizjoQyY9VwjwKsl7nJ8LLWHko5SZm/0+/A8ila05YQpKp8BERHxpC+i8Vr8oYyhJtlQBQ==}
+  /@types/sharp@0.31.1:
+    resolution: {integrity: sha512-5nWwamN9ZFHXaYEincMSuza8nNfOof8nmO+mcI+Agx1uMUk4/pQnNIcix+9rLPXzKrm1pS34+6WRDbDV0Jn7ag==}
     dependencies:
       '@types/node': 20.11.19
     dev: true
