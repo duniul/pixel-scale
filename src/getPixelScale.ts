@@ -1,5 +1,5 @@
-import { findCommonDivisors } from './helpers/commonDivisors';
-import { ImageDataLike, ImageDataLikeData, GetPixelScaleOptions } from './types';
+import { findCommonDivisors } from './helpers/commonDivisors.js';
+import { ImageDataLike, ImageDataLikeData, GetPixelScaleOptions } from './types.js';
 
 function isMatchingColor(rgbaA: number[], rgbaB: number[], maxColorDiff: number) {
   return rgbaA.every((rgba, i) => {

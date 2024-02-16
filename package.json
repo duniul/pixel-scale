@@ -21,8 +21,9 @@
     "pixel-art",
     "canvas"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "files": [
     "dist/**"
   ],

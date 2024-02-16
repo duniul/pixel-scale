@@ -1,5 +1,5 @@
-import { getPixelScale } from './getPixelScale';
-import { ScalePixelsOptions } from './types';
+import { getPixelScale } from './getPixelScale.js';
+import { ScalePixelsOptions } from './types.js';
 
 export function scalePixels(
   imageData: ImageData,

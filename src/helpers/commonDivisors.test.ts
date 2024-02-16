@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { findCommonDivisors, findGCD } from './commonDivisors';
+import { findCommonDivisors, findGCD } from './commonDivisors.js';
 
 interface Sample {
   numbers: [number, number];

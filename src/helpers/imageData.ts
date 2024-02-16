@@ -1,4 +1,4 @@
-import { ImageDataLike } from '../types';
+import { ImageDataLike } from '../types.js';
 
 export function isValidImageData(imageData: ImageDataLike): imageData is ImageDataLike {
   return !!(

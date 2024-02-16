@@ -4,8 +4,8 @@ import {
   getPixelTheCatScale1,
   getPixelTheCatScale32,
   getPixelTheCatScale5,
-} from '../test/testImageData';
-import { scalePixels } from './scalePixels';
+} from '../test/testImageData.js';
+import { scalePixels } from './scalePixels.js';
 
 global.ImageData = IsomorphicImageData as any;
 

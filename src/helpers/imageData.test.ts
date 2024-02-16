@@ -1,6 +1,6 @@
 import ImageData from '@canvas/image-data';
 import { describe, expect, it } from 'vitest';
-import { isValidImageData } from './imageData';
+import { isValidImageData } from './imageData.js';
 
 describe('isValidImageData', () => {
   it('returns true if input has valid ImageData shape', () => {
