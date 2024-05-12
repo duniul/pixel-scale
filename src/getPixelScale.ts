@@ -1,5 +1,5 @@
 import { findCommonDivisors } from './helpers/commonDivisors.js';
-import { ImageDataLike, ImageDataLikeData, GetPixelScaleOptions } from './types.js';
+import type { GetPixelScaleOptions, ImageDataLike, ImageDataLikeData } from './types.js';
 
 function isMatchingColor(rgbaA: number[], rgbaB: number[], maxColorDiff: number) {
   return rgbaA.every((rgba, i) => {
@@ -91,8 +91,9 @@ function isValidScale(imageData: ImageDataLike, scale: number, maxColorDiff: num
 
 export function getPixelScale(
   imageData: ImageDataLike,
-  { maxColorDiff = 0 }: GetPixelScaleOptions = {}
+  options?: GetPixelScaleOptions | undefined | null
 ): number {
+  const { maxColorDiff = 0 } = options || {};
   const { width, height } = imageData;
   const possibleScales = findCommonDivisors(width, height);
 
@@ -100,9 +101,9 @@ export function getPixelScale(
   // then we cannot correctly determine the pixel scale
   if (findCommonDivisors.length === 1) {
     return 1;
-  } else {
-    possibleScales.shift();
   }
+
+  possibleScales.shift();
 
   // start from largest divisor, since it's more efficient
   // and we want to find the highest possible pixel scale

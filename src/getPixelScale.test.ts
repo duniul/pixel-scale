@@ -1,12 +1,12 @@
 import { beforeAll, expect, it } from 'vitest';
-import { getPixelScale } from './getPixelScale.js';
 import {
   getPixelTheCatScale1,
-  getPixelTheCatScale32,
   getPixelTheCatScale5,
+  getPixelTheCatScale32,
   getVectorAvatar,
   getWhiteSquareScale100,
 } from '../test/testImageData.js';
+import { getPixelScale } from './getPixelScale.js';
 
 const imageData: Record<string, ImageData> = {};
 
