@@ -37,3 +37,23 @@ export function scalePixels(
 
   return new ImageData(Uint8ClampedArray.from(newData), newWidth, newHeight);
 }
+
+export function multiplyPixelScale(
+  imageData: ImageData,
+  by: number,
+  options?: ScalePixelsOptions | undefined | null
+) {
+  const scale = getPixelScale(imageData, options);
+  const to = scale * by;
+  return scalePixels(imageData, to, options);
+}
+
+export function dividePixelScale(
+  imageData: ImageData,
+  by: number,
+  options?: ScalePixelsOptions | undefined | null
+) {
+  const scale = getPixelScale(imageData, options);
+  const to = scale / by;
+  return scalePixels(imageData, to, options);
+}

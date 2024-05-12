@@ -1,7 +1,7 @@
 <p align="center">
-<img src="https://github.com/duniul/pixel-scale/blob/master/test/images/pixel-the-cat_x1.png" />
-<img src="https://github.com/duniul/pixel-scale/blob/master/test/images/pixel-the-cat_x5.png" />
-<img src="https://github.com/duniul/pixel-scale/blob/master/test/images/pixel-the-cat_x10.png" />
+<img src="https://github.com/duniul/pixel-scale/blob/main/test/images/pixel-the-cat_x1.png" />
+<img src="https://github.com/duniul/pixel-scale/blob/main/test/images/pixel-the-cat_x5.png" />
+<img src="https://github.com/duniul/pixel-scale/blob/main/test/images/pixel-the-cat_x10.png" />
 </p>
 
 # pixel-scale
@@ -24,6 +24,17 @@ has been multiplied to increase the image size. For example,
 a pixel scale of 1, while
 [this image](https://github.com/duniul/pixel-scale/blob/master/test/images/pixel-the-cat_x10.png)
 has a pixel scale of 10.
+
+## Table of contents
+
+- [Demo](#demo)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [`scalePixels(imageData, to, options)`](#scalepixelsimagedata-to-options)
+  - [`getPixelScale(imageData, options)`](#getpixelscaleimagedata-options)
+  - [`multiplyPixelScale(imageData, by, options)`](#multiplypixelscaleimagedata-by-options)
+  - [`multiplyPixelScale(imageData, by, options)`](#multiplypixelscaleimagedata-by-options-1)
+- [How does it work?](#how-does-it-work)
 
 ## Demo
 
@@ -84,15 +95,7 @@ Get the current pixel scale of an image.
 
 - `options` (object, optional)
 
-  - `maxColorDiff` (number, default: 0) - A number setting the maximum difference allowed in an
-    individual color channel (0-255) when comparing pixels. Useful when getting the pixel scale of
-    an image that may contain e.g. JPEG-fragments or color distortions.
-
-    As an example,
-    [this Metal Slug image](https://github.com/duniul/pixel-scale/blob/master/test/images/metal-slug_x24.png)
-    has a pixel scale of 24, but since it has been incorrectly resized and contains some
-    miscolored lines between its scaled pixels it would be detected as having a scale of 1 unless
-    the `maxColorDiff` is increased.
+  - `maxColorDiff` (number, default: 0) - See `scalePixels`'s `maxColorDiff` option.
 
 **Return value:**
 
@@ -109,6 +112,61 @@ const imageScale = getPixelScale(imageData);
 // get an image's pixel scale, allowing a maximum difference of 10 when comparing
 // color channels of individual pixels
 const imageScale = getPixelScale(imageData, { maxColorDiff: 10 });
+```
+
+### `multiplyPixelScale(imageData, by, options)`
+
+Similar to `scalePixels`, but upscales the image by the specified multiplier instead of to a specific scale. Detects the current scale of the image if no `options.from` value is provided.
+
+**Parameters:**
+
+- `imageData` (ImageData instance) - The ImageData instance to upscale.
+
+- `by` (number) - The amount to multiply the image's current scale by.
+
+- `options` (object, optional) - See `scalePixels`'s `options`.
+
+**Return value:**
+
+A new, scaled ImageData-instance.
+
+**Examples:**
+
+```js
+import { multiplyPixelScale } from 'pixel-scale';
+
+// detect an image's current scale, and double it's size
+const doubledImageData = multiplyPixelScale(imageData, 2);
+
+// take an image of scale 5, and multiply it by 10
+const tenfoldImageData = multiplyPixelScale(imageData, 10, { from: 5 });
+```
+
+### `multiplyPixelScale(imageData, by, options)`
+
+Similar to `scalePixels`, but downscales the image by the specified amount of times instead of to a specific scale. Detects the current scale of the image if no `options.from` value is provided.
+**Parameters:**
+
+- `imageData` (ImageData instance) - The ImageData instance to downscale.
+
+- `by` (number) - The amount to divide the image's current scale by.
+
+- `options` (object, optional) - See `scalePixels`'s `options`.
+
+**Return value:**
+
+A new, scaled ImageData-instance.
+
+**Examples:**
+
+```js
+import { dividePixelScale } from 'pixel-scale';
+
+// detect an image's current scale, and make it half as big
+const doubledImageData = dividePixelScale(imageData, 2);
+
+// take an image of scale 8 and divide it by 4
+const tenfoldImageData = dividePixelScale(imageData, 4, { from: 8 });
 ```
 
 ## How does it work?
