@@ -12,18 +12,12 @@
 📐 Get the pixel scale of an image, or scale it up or down without quality loss. Useful for pixel
 art!
 
-All functions operate on [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData),
-which can be retrieved from a
-[canvas](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) in the browser or e.g.
-[node-canvas](https://github.com/Automattic/node-canvas) or [sharp](https://github.com/lovell/sharp)
-on Node.
+- 👀 Zero loss of quality
+- 🤖 Auto-detects current scale by default
+- ⏫ Can scale by multiplier or to a specific scale
+- 0️⃣ Zero dependencies
+- 🖼️ Works directly on [ImageData](#imagedata)
 
-The pixel scale referred to in this readme is the amount of times a pixel of e.g. a pixel art image
-has been multiplied to increase the image size. For example,
-[this image](https://github.com/duniul/pixel-scale/blob/master/test/images/pixel-the-cat_x1.png) has
-a pixel scale of 1, while
-[this image](https://github.com/duniul/pixel-scale/blob/master/test/images/pixel-the-cat_x10.png)
-has a pixel scale of 10.
 
 ## Table of contents
 
@@ -34,7 +28,10 @@ has a pixel scale of 10.
   - [`getPixelScale(imageData, options)`](#getpixelscaleimagedata-options)
   - [`multiplyPixelScale(imageData, by, options)`](#multiplypixelscaleimagedata-by-options)
   - [`multiplyPixelScale(imageData, by, options)`](#multiplypixelscaleimagedata-by-options-1)
-- [How does it work?](#how-does-it-work)
+- [About](#about)
+  - [ImageData](#imagedata)
+  - [Pixel scale](#pixel-scale-1)
+  - [How does it work?](#how-does-it-work)
 
 ## Demo
 
@@ -169,7 +166,26 @@ const doubledImageData = dividePixelScale(imageData, 2);
 const tenfoldImageData = dividePixelScale(imageData, 4, { from: 8 });
 ```
 
-## How does it work?
+## About
+
+### ImageData
+
+All functions operate on [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData),
+which can be retrieved from a
+[canvas](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) in the browser or e.g.
+[node-canvas](https://github.com/Automattic/node-canvas) or [sharp](https://github.com/lovell/sharp)
+on Node.
+
+### Pixel scale
+
+The pixel scale referred to in this readme is the amount of times a pixel of e.g. a pixel art image
+has been multiplied to increase the image size. For example,
+[this image](https://github.com/duniul/pixel-scale/blob/master/test/images/pixel-the-cat_x1.png) has
+a pixel scale of 1, while
+[this image](https://github.com/duniul/pixel-scale/blob/master/test/images/pixel-the-cat_x10.png)
+has a pixel scale of 10.
+
+### How does it work?
 
 To get the pixel scale of an image, `pixel-scale` first figures out the common divisors of the
 image's height and width. This is done using Euclid's algorithm for finding the greatest common
