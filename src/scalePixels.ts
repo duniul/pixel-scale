@@ -1,11 +1,12 @@
 import { getPixelScale } from './getPixelScale.js';
-import { ScalePixelsOptions } from './types.js';
+import type { ScalePixelsOptions } from './types.js';
 
 export function scalePixels(
   imageData: ImageData,
   to: number,
-  { from, maxColorDiff }: ScalePixelsOptions
+  options?: ScalePixelsOptions | undefined | null
 ): ImageData {
+  const { from, maxColorDiff } = options || {};
   const { data, width, height } = imageData;
   const currentScale = from || getPixelScale(imageData, { maxColorDiff: maxColorDiff || 0 });
   const dataLength = data.length;

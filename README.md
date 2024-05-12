@@ -47,7 +47,7 @@ Up- or downscales an image to the specified scale, without losing quality or cha
 
 - `to` (number) - The desired scale of the new image.
 
-- `options` (object)
+- `options` (object, optional)
   - `from` (number) - The current scale of the image. If no `from` value is provided, the scale is
     calculated with `getPixelScale`. Only provide a `from` value if you are sure of the current
     pixel scale and want to save time.
@@ -82,7 +82,7 @@ Get the current pixel scale of an image.
 
 - `imageData` (ImageData instance) - The ImageData instance to scale.
 
-- `options` (object)
+- `options` (object, optional)
 
   - `maxColorDiff` (number, default: 0) - A number setting the maximum difference allowed in an
     individual color channel (0-255) when comparing pixels. Useful when getting the pixel scale of
