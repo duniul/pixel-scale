@@ -12,6 +12,9 @@
       }
     }
   },
+  "organizeImports": {
+    "enabled": true
+  },
   "formatter": {
     "enabled": true,
     "lineWidth": 100,
