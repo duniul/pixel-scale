@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1
+
+### Patch Changes
+
+- Code clean up and corrected readme. _[`17c47c2`](https://github.com/duniul/pixel-scale/commit/17c47c2e90cf8a7f4bc89dbe1446d13544c2e71d) [@duniul](https://github.com/duniul)_
+
 ## 2.0.0
 
 ### Major Changes
