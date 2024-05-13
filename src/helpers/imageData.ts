@@ -5,6 +5,6 @@ export function isValidImageData(imageData: ImageDataLike): imageData is ImageDa
     imageData &&
     typeof imageData.width === 'number' &&
     typeof imageData.height === 'number' &&
-    imageData?.data?.length === imageData.width * imageData.height * 4
+    imageData.data?.length === imageData.width * imageData.height * 4
   );
 }

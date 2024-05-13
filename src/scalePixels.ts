@@ -23,13 +23,10 @@ export function scalePixels(
     // create one row per pixel scale
     for (let rowCount = 0; rowCount < newScale; rowCount++) {
       // loop through each scaled pixel on the row
-      for (let pixelStart = rowStart; pixelStart < rowEnd; pixelStart += currentScale * 4) {
+      for (let pStart = rowStart; pStart < rowEnd; pStart += currentScale * 4) {
         // add the corresponding colors according to the new scale
         for (let colCount = 0; colCount < newScale; colCount++) {
-          newData.push(data[pixelStart]);
-          newData.push(data[pixelStart + 1]);
-          newData.push(data[pixelStart + 2]);
-          newData.push(data[pixelStart + 3]);
+          newData.push(data[pStart], data[pStart + 1], data[pStart + 2], data[pStart + 3]);
         }
       }
     }
@@ -40,20 +37,18 @@ export function scalePixels(
 
 export function multiplyPixelScale(
   imageData: ImageData,
-  by: number,
+  multiplier: number,
   options?: ScalePixelsOptions | undefined | null
 ) {
   const scale = getPixelScale(imageData, options);
-  const to = scale * by;
-  return scalePixels(imageData, to, options);
+  return scalePixels(imageData, scale * multiplier, options);
 }
 
 export function dividePixelScale(
   imageData: ImageData,
-  by: number,
+  divider: number,
   options?: ScalePixelsOptions | undefined | null
 ) {
   const scale = getPixelScale(imageData, options);
-  const to = scale / by;
-  return scalePixels(imageData, to, options);
+  return scalePixels(imageData, scale / divider, options);
 }

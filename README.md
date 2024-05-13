@@ -27,7 +27,7 @@ art!
   - [`scalePixels(imageData, to, options)`](#scalepixelsimagedata-to-options)
   - [`getPixelScale(imageData, options)`](#getpixelscaleimagedata-options)
   - [`multiplyPixelScale(imageData, by, options)`](#multiplypixelscaleimagedata-by-options)
-  - [`multiplyPixelScale(imageData, by, options)`](#multiplypixelscaleimagedata-by-options-1)
+  - [`dividePixelScale(imageData, by, options)`](#divideixelscaleimagedata-by-options)
 - [About](#about)
   - [ImageData](#imagedata)
   - [Pixel scale](#pixel-scale-1)
@@ -139,9 +139,10 @@ const doubledImageData = multiplyPixelScale(imageData, 2);
 const tenfoldImageData = multiplyPixelScale(imageData, 10, { from: 5 });
 ```
 
-### `multiplyPixelScale(imageData, by, options)`
+### `dividePixelScale(imageData, by, options)`
 
 Similar to `scalePixels`, but downscales the image by the specified amount of times instead of to a specific scale. Detects the current scale of the image if no `options.from` value is provided.
+
 **Parameters:**
 
 - `imageData` (ImageData instance) - The ImageData instance to downscale.
