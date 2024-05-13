@@ -1,6 +1,6 @@
 {
   "name": "pixel-scale",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Get the pixel scale of an image, or scale it up or down without quality loss. Useful for pixel art!",
   "author": "Daniel Grefberg <hello@danielgrefberg.com>",
   "license": "ISC",
