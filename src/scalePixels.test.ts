@@ -85,40 +85,37 @@ describe(scalePixels.name, () => {
 
 describe(multiplyPixelScale.name, () => {
   it.each([
-    { startScale: 1, times: 8 },
-    { startScale: 5, times: 6 },
-    { startScale: 32, times: 3 },
-  ])('multiplies pixel scale (from: $startScale, times: $times)', async ({ startScale, times }) => {
-    const imageData = await testImageData[startScale];
-    const imageScale = getPixelScale(imageData);
-    const expectedScale = times * imageScale;
-    const expectedHeight = imageData.height * times;
-    const expectedWidth = imageData.width * times;
+    { startScale: 1, multiplier: 6 },
+    { startScale: 5, multiplier: 4 },
+    { startScale: 32, multiplier: 2 },
+  ])(
+    'multiplies pixel scale (from: $startScale, multiplier: $multiplier)',
+    async ({ startScale, multiplier }) => {
+      const imageData = await testImageData[startScale];
+      const imageScale = getPixelScale(imageData);
+      const result = multiplyPixelScale(imageData, multiplier);
 
-    const result = multiplyPixelScale(imageData, times);
-
-    expect(getPixelScale(result)).toBe(expectedScale);
-    expect(result.height).toBe(expectedHeight);
-    expect(result.width).toBe(expectedWidth);
-  });
+      expect(getPixelScale(result)).toBe(imageScale * multiplier);
+      expect(result.height).toBe(imageData.height * multiplier);
+      expect(result.width).toBe(imageData.width * multiplier);
+    }
+  );
 });
 
 describe(dividePixelScale.name, () => {
   it.each([
-    { startScale: 1, times: 8 },
-    { startScale: 5, times: 6 },
-    { startScale: 32, times: 3 },
-  ])('divides pixel scale (from: $startScale, times: $times)', async ({ startScale, times }) => {
-    const imageData = await testImageData[startScale];
-    const imageScale = getPixelScale(imageData);
-    const expectedScale = times * imageScale;
-    const expectedHeight = imageData.height * times;
-    const expectedWidth = imageData.width * times;
+    { startScale: 5, divider: 5 },
+    { startScale: 32, divider: 8 },
+  ])(
+    'divides pixel scale (from: $startScale, divider: $divider)',
+    async ({ startScale, divider }) => {
+      const imageData = await testImageData[startScale];
+      const imageScale = getPixelScale(imageData);
+      const result = dividePixelScale(imageData, divider);
 
-    const result = multiplyPixelScale(imageData, times);
-
-    expect(getPixelScale(result)).toBe(expectedScale);
-    expect(result.height).toBe(expectedHeight);
-    expect(result.width).toBe(expectedWidth);
-  });
+      expect(getPixelScale(result)).toBe(imageScale / divider);
+      expect(result.height).toBe(imageData.height / divider);
+      expect(result.width).toBe(imageData.width / divider);
+    }
+  );
 });
