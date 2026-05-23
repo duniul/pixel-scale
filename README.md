@@ -18,7 +18,6 @@ art!
 - 0️⃣ Zero dependencies
 - 🖼️ Works directly on [ImageData](#imagedata)
 
-
 ## Table of contents
 
 - [Demo](#demo)
@@ -91,7 +90,6 @@ Get the current pixel scale of an image.
 - `imageData` (ImageData instance) - The ImageData instance to scale.
 
 - `options` (object, optional)
-
   - `maxColorDiff` (number, default: 0) - See `scalePixels`'s `maxColorDiff` option.
 
 **Return value:**

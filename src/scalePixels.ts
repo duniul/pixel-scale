@@ -26,7 +26,8 @@ export function scalePixels(
       for (let pStart = rowStart; pStart < rowEnd; pStart += currentScale * 4) {
         // add the corresponding colors according to the new scale
         for (let colCount = 0; colCount < newScale; colCount++) {
-          newData.push(data[pStart], data[pStart + 1], data[pStart + 2], data[pStart + 3]);
+          // oxlint-disable-next-line typescript/no-non-null-assertion
+          newData.push(data[pStart]!, data[pStart + 1]!, data[pStart + 2]!, data[pStart + 3]!);
         }
       }
     }
@@ -39,7 +40,7 @@ export function multiplyPixelScale(
   imageData: ImageData,
   multiplier: number,
   options?: ScalePixelsOptions | undefined | null
-) {
+): ImageData {
   const scale = getPixelScale(imageData, options);
   return scalePixels(imageData, scale * multiplier, options);
 }
@@ -48,7 +49,7 @@ export function dividePixelScale(
   imageData: ImageData,
   divider: number,
   options?: ScalePixelsOptions | undefined | null
-) {
+): ImageData {
   const scale = getPixelScale(imageData, options);
   return scalePixels(imageData, scale / divider, options);
 }

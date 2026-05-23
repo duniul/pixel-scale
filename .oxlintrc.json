@@ -4,7 +4,8 @@
   "plugins": ["eslint", "import", "jsdoc", "node", "oxc", "promise", "typescript", "unicorn"],
   "env": {
     "builtin": true,
-    "node": true
+    "browser": true,
+    "shared-node-browser": true
   },
   "categories": {
     "correctness": "error",
@@ -45,7 +46,7 @@
     "no-duplicate-imports": ["error", { "allowSeparateTypeImports": true }],
     "no-implicit-coercion": "off",
     "no-inline-comments": "off",
-    "no-magic-numbers": ["error", { "ignore": [0, 1], "ignoreDefaultValues": true }],
+    "no-magic-numbers": "off",
     "no-nested-ternary": "off",
     "no-null": "off",
     "no-optional-chaining": "off",
@@ -95,9 +96,15 @@
     {
       "files": ["*.test.ts", "__test__/**"],
       "plugins": ["vitest"],
+      "env": {
+        "vitest": true,
+        "node": true
+      },
       "rules": {
         "vitest/no-hooks": "off",
+        "vitest/require-top-level-describe": "off",
         "vitest/no-importing-vitest-globals": "off",
+        "vitest/consistent-test-it": "off",
         "vitest/prefer-to-be-truthy": "off",
         "vitest/prefer-to-be-falsy": "off",
         "vitest/max-expects": "off",

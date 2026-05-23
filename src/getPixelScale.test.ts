@@ -1,4 +1,4 @@
-import { beforeAll, expect, it } from 'vitest';
+import { beforeAll, expect, it, vi } from 'vitest';
 import {
   getPixelTheCatScale1,
   getPixelTheCatScale5,
@@ -8,23 +8,53 @@ import {
 } from '../test/testImageData.js';
 import { getPixelScale } from './getPixelScale.js';
 
-const imageData: Record<string, ImageData> = {};
+vi.setConfig({ testTimeout: 5000 });
+
+const imageData = {
+  scale1ImageData: [] as unknown as ImageData,
+  scale5ImageData: [] as unknown as ImageData,
+  scale32ImageData: [] as unknown as ImageData,
+  vectorAvatar: [] as unknown as ImageData,
+  whiteSquare: [] as unknown as ImageData,
+};
 
 beforeAll(async () => {
-  imageData.scale1ImageData = await getPixelTheCatScale1();
-  imageData.scale5ImageData = await getPixelTheCatScale5();
-  imageData.scale32ImageData = await getPixelTheCatScale32();
-  imageData.vectorAvatar = await getVectorAvatar();
-  imageData.whiteSquare = await getWhiteSquareScale100();
+  await Promise.all([
+    getPixelTheCatScale1().then(p => {
+      imageData.scale1ImageData = p;
+      return p;
+    }),
+    getPixelTheCatScale5().then(p => {
+      imageData.scale5ImageData = p;
+      return p;
+    }),
+    getPixelTheCatScale32().then(p => {
+      imageData.scale32ImageData = p;
+      return p;
+    }),
+    getVectorAvatar().then(p => {
+      imageData.vectorAvatar = p;
+      return p;
+    }),
+    getWhiteSquareScale100().then(p => {
+      imageData.whiteSquare = p;
+      return p;
+    }),
+  ]);
 });
 
-it('returns the correct pixel scale', async () => {
+// oxlint-disable-next-line vitest/consistent-test-it
+it('returns the correct pixel scale', () => {
+  expect.hasAssertions();
+
   expect(getPixelScale(imageData.scale1ImageData)).toBe(1);
   expect(getPixelScale(imageData.scale5ImageData)).toBe(5);
   expect(getPixelScale(imageData.scale32ImageData)).toBe(32);
   expect(getPixelScale(imageData.vectorAvatar)).toBe(1);
 });
 
-it('returns full width of square, single color images', async () => {
+it('returns full width of square, single color images', () => {
+  expect.hasAssertions();
+
   expect(getPixelScale(imageData.whiteSquare)).toBe(100);
 });
