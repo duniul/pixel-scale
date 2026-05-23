@@ -41,8 +41,8 @@
     }
   },
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "test": "vitest",
     "prepublishOnly": "pnpm build",
     "format": "oxfmt --write .",
@@ -60,7 +60,7 @@
     "oxfmt": "0.51.0",
     "oxlint": "1.66.0",
     "sharp": "0.33.3",
-    "tsup": "^8.0.2",
+    "tsdown": "0.22.0",
     "typescript": "^5.4.5",
     "vitest": "^1.6.0"
   },
