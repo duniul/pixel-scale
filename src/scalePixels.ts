@@ -12,28 +12,31 @@ export function scalePixels(
   const dataLength = data.length;
   const rowLength = width * 4;
   const scaledRowLength = currentScale * rowLength;
-  const newScale = to;
-  const newWidth = (width / currentScale) * newScale;
-  const newHeight = (height / currentScale) * newScale;
-  const newData: number[] = [];
+  const newWidth = (width / currentScale) * to;
+  const newHeight = (height / currentScale) * to;
+
+  const newData = new Uint8ClampedArray(newWidth * newHeight * 4);
+  let writeIndex = 0;
 
   // loop through each row of the current scale
   for (let rowStart = 0; rowStart < dataLength; rowStart += scaledRowLength) {
     const rowEnd = rowStart + rowLength;
     // create one row per pixel scale
-    for (let rowCount = 0; rowCount < newScale; rowCount++) {
+    for (let rowCount = 0; rowCount < to; rowCount++) {
       // loop through each scaled pixel on the row
       for (let pStart = rowStart; pStart < rowEnd; pStart += currentScale * 4) {
         // add the corresponding colors according to the new scale
-        for (let colCount = 0; colCount < newScale; colCount++) {
-          // oxlint-disable-next-line typescript/no-non-null-assertion
-          newData.push(data[pStart]!, data[pStart + 1]!, data[pStart + 2]!, data[pStart + 3]!);
+        for (let colCount = 0; colCount < to; colCount++) {
+          newData[writeIndex++] = data[pStart]!; // oxlint-disable-line typescript/no-non-null-assertion
+          newData[writeIndex++] = data[pStart + 1]!; // oxlint-disable-line typescript/no-non-null-assertion
+          newData[writeIndex++] = data[pStart + 2]!; // oxlint-disable-line typescript/no-non-null-assertion
+          newData[writeIndex++] = data[pStart + 3]!; // oxlint-disable-line typescript/no-non-null-assertion
         }
       }
     }
   }
 
-  return new ImageData(Uint8ClampedArray.from(newData), newWidth, newHeight);
+  return new ImageData(newData, newWidth, newHeight);
 }
 
 export function multiplyPixelScale(
