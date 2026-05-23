@@ -1,7 +1,46 @@
 {
-  "[javascript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
-  "[javascriptreact]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
-  "[typescript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
-  "[typescriptreact]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
-  "[json]": { "editor.defaultFormatter": "oxc.oxc-vscode" }
+  // Make VSCode warn about same commit lengths for everyone
+  "git.inputValidation": true,
+  "git.inputValidationLength": 100,
+  "git.inputValidationSubjectLength": 72,
+
+  // Insert correct new lines and remove redundant whitespace to keep POSIX-compliant
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+
+  // Exclude frequently updated/large files that we usually don't care about
+  "files.watcherExclude": {
+    // VSCode defaults
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.hg/store/**": true,
+
+    // custom
+    "**/dist/**": true,
+    "**/lib/**": true,
+    "**/coverage/**": true
+  },
+
+  // Ensure we use the same formatter for files
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "files.trimTrailingWhitespace": false // Markdown uses trailing whitespace for line breaks
+  },
+
+  // Use same TypeScript version as repo rather than local user version
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
