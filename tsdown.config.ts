@@ -1,10 +1,10 @@
 import { defineConfig } from 'tsdown';
 
 export default defineConfig({
-  format: ['cjs', 'esm'],
+  format: ['esm'],
   entry: ['src/index.ts'],
   outDir: 'dist',
-  target: 'es2020',
+  target: 'es2022',
   outExtensions: () => ({ js: '.js', dts: '.d.ts' }),
   sourcemap: false,
   clean: true,
