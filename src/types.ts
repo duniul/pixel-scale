@@ -1,4 +1,4 @@
-export type ImageDataLikeData = Uint8ClampedArray | number[];
+export type ImageDataLikeData = Uint8ClampedArray;
 
 export type ImageDataLike = {
   data: ImageDataLikeData;
