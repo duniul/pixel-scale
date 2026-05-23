@@ -4,6 +4,7 @@
   "description": "Get the pixel scale of an image, or scale it up or down without quality loss. Useful for pixel art!",
   "author": "Daniel Grefberg <hello@danielgrefberg.com>",
   "license": "ISC",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/duniul/pixel-scale.git"
