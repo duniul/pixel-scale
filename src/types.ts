@@ -1,16 +1,16 @@
 export type ImageDataLikeData = Uint8ClampedArray | number[];
 
-export interface ImageDataLike {
+export type ImageDataLike = {
   data: ImageDataLikeData;
   height: number;
   width: number;
-}
+};
 
-export interface ScalePixelsOptions {
+export type ScalePixelsOptions = {
   from?: number;
   maxColorDiff?: number;
-}
+};
 
-export interface GetPixelScaleOptions {
+export type GetPixelScaleOptions = {
   maxColorDiff?: number;
-}
+};

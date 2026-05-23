@@ -1,9 +1,10 @@
 import { findCommonDivisors } from './helpers/commonDivisors.js';
 import type { GetPixelScaleOptions, ImageDataLike, ImageDataLikeData } from './types.js';
 
-function isMatchingColor(rgbaA: number[], rgbaB: number[], maxColorDiff: number) {
+function isMatchingColor(rgbaA: number[], rgbaB: number[], maxColorDiff: number): boolean {
   return rgbaA.every((rgba, i) => {
-    const colorDiff = Math.abs(rgba - rgbaB[i]);
+    // oxlint-disable-next-line typescript/no-non-null-assertion
+    const colorDiff = Math.abs(rgba - rgbaB[i]!);
     return colorDiff <= maxColorDiff;
   });
 }
@@ -14,9 +15,10 @@ function isMatchingRange(
   indexA: number,
   indexB: number,
   maxColorDiff: number
-) {
+): boolean {
   for (let i = 0; i < length; i++) {
-    const colorDiff = Math.abs(data[indexA + i] - data[indexB + i]);
+    // oxlint-disable-next-line typescript/no-non-null-assertion
+    const colorDiff = Math.abs(data[indexA + i]! - data[indexB + i]!);
     if (colorDiff > maxColorDiff) {
       return false;
     }
@@ -26,10 +28,10 @@ function isMatchingRange(
 }
 
 function getRGBATuple(data: ImageDataLikeData, index: number): number[] {
-  const red = data[index];
-  const green = data[index + 1];
-  const blue = data[index + 2];
-  const alpha = data[index + 3];
+  const red = data[index]!; // oxlint-disable-line typescript/no-non-null-assertion
+  const green = data[index + 1]!; // oxlint-disable-line typescript/no-non-null-assertion
+  const blue = data[index + 2]!; // oxlint-disable-line typescript/no-non-null-assertion
+  const alpha = data[index + 3]!; // oxlint-disable-line typescript/no-non-null-assertion
   return [red, green, blue, alpha];
 }
 
@@ -39,7 +41,7 @@ function isValidRow(
   rowStart: number,
   rowEnd: number,
   maxColorDiff: number
-) {
+): boolean {
   const scaledPixel = scale * 4;
 
   // loop through each scaled pixel
@@ -59,7 +61,7 @@ function isValidRow(
   return true;
 }
 
-function isValidScale(imageData: ImageDataLike, scale: number, maxColorDiff: number) {
+function isValidScale(imageData: ImageDataLike, scale: number, maxColorDiff: number): boolean {
   const { data, width } = imageData;
   const dataLength = data.length;
   const rowLength = width * 4;
@@ -108,7 +110,7 @@ export function getPixelScale(
   // start from largest divisor, since it's more efficient
   // and we want to find the highest possible pixel scale
   for (let scaleIndex = possibleScales.length - 1; scaleIndex >= 0; scaleIndex--) {
-    const scale = possibleScales[scaleIndex];
+    const scale = possibleScales[scaleIndex]!; // oxlint-disable-line typescript/no-non-null-assertion
     const validScale = isValidScale(imageData, scale, maxColorDiff);
     if (validScale) {
       return scale;
