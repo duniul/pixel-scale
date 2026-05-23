@@ -62,7 +62,7 @@
     "sharp": "0.33.3",
     "tsdown": "0.22.0",
     "typescript": "^5.4.5",
-    "vitest": "^1.6.0"
+    "vitest": "4.1.7"
   },
   "packageManager": "pnpm@11.2.2"
 }
