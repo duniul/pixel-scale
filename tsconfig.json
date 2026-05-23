@@ -1,18 +1,30 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": ["@tsconfig/node14/tsconfig.json"],
+  "exclude": ["node_modules", "dist", ".history"],
   "compilerOptions": {
-    "target": "es6",
-    "lib": ["DOM"],
-    "module": "node16",
+    "lib": ["esnext", "DOM"],
+    "target": "esnext",
+    "module": "preserve",
+    "moduleResolution": "bundler",
+
+    "outDir": "dist",
+    "noEmit": true,
+    "tsBuildInfoFile": "./.tsbuildinfo",
+    "incremental": true,
+
     "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+
     "exactOptionalPropertyTypes": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
     "noImplicitOverride": true,
-    "declaration": true
-  },
-  "include": ["./src"]
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUncheckedSideEffectImports": true
+  }
 }

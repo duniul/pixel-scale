@@ -26,3 +26,6 @@ lerna-debug.log*
 
 # Parcel cache
 **/.cache
+
+# TypeScript
+.tsbuildinfo
