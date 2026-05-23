@@ -81,8 +81,8 @@ function isValidScale(imageData: ImageDataLike, scale: number, maxColorDiff: num
     // ensure all remaining rows in the scaled row are identical to the top row
     for (let rowCount = 1; rowCount < scale; rowCount++) {
       const rowStart = firstRowStart + rowCount * rowLength;
-      const matchinRow = isMatchingRange(data, rowLength, firstRowStart, rowStart, maxColorDiff);
-      if (!matchinRow) {
+      const matchInRow = isMatchingRange(data, rowLength, firstRowStart, rowStart, maxColorDiff);
+      if (!matchInRow) {
         return false;
       }
     }
