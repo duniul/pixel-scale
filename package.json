@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/duniul/pixel-scale/issues"
   },
-  "packageManager": "pnpm@9.1.0",
+  "packageManager": "pnpm@11.2.2",
   "keywords": [
     "image",
     "image-data",
