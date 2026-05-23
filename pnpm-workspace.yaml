@@ -1,0 +1,8 @@
+allowBuilds:
+  '@biomejs/biome': true
+  esbuild: true
+  sharp: true
+
+engineStrict: true
+
+nodeVersion: '24.13.0'
