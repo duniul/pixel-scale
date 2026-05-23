@@ -41,8 +41,8 @@ export function multiplyPixelScale(
   multiplier: number,
   options?: ScalePixelsOptions | undefined | null
 ): ImageData {
-  const scale = getPixelScale(imageData, options);
-  return scalePixels(imageData, scale * multiplier, options);
+  const from = options?.from || getPixelScale(imageData, options);
+  return scalePixels(imageData, from * multiplier, { ...options, from });
 }
 
 export function dividePixelScale(
@@ -50,6 +50,6 @@ export function dividePixelScale(
   divider: number,
   options?: ScalePixelsOptions | undefined | null
 ): ImageData {
-  const scale = getPixelScale(imageData, options);
-  return scalePixels(imageData, scale / divider, options);
+  const from = options?.from || getPixelScale(imageData, options);
+  return scalePixels(imageData, from / divider, { ...options, from });
 }
