@@ -52,7 +52,7 @@
     "release": "changeset publish"
   },
   "devDependencies": {
-    "@canvas/image-data": "1.0.0",
+    "@canvas/image-data": "1.1.0",
     "@changesets/cli": "^2.27.1",
     "@tsconfig/node14": "^14.1.2",
     "@types/sharp": "^0.31.1",
