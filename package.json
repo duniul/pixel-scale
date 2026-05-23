@@ -38,6 +38,8 @@
     "dev": "tsdown --sourcemap true --watch",
     "test": "vitest run",
     "test:watch": "vitest --watch",
+    "bench": "vitest bench --run --compare test/bench.baseline.json",
+    "bench:baseline": "vitest bench --run --outputJson test/bench.baseline.json",
     "prepublishOnly": "pnpm build",
     "stylecheck": "oxfmt --check src && oxlint src",
     "typecheck": "tsc --noEmit",
