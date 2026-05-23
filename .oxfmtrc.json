@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": ["**/node_modules", "**/dist", "**/.history", "**/tsconfig.tsbuildinfo"],
+  "ignorePatterns": ["**/node_modules", "**/dist", "**/.history", "**/.tsbuildinfo", "**/bench.*.json"],
   "printWidth": 110,
   "trailingComma": "es5",
   "jsxSingleQuote": true,
