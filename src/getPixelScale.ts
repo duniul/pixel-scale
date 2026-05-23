@@ -101,7 +101,7 @@ export function getPixelScale(
 
   // if dimensions are only divisable by 1,
   // then we cannot correctly determine the pixel scale
-  if (findCommonDivisors.length === 1) {
+  if (possibleScales.length === 1) {
     return 1;
   }
 
