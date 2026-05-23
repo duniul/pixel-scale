@@ -9,6 +9,11 @@ export function scalePixels(
   const { from, maxColorDiff } = options || {};
   const { data, width, height } = imageData;
   const currentScale = from || getPixelScale(imageData, { maxColorDiff: maxColorDiff || 0 });
+
+  if (to === currentScale) {
+    return new ImageData(new Uint8ClampedArray(data), width, height);
+  }
+
   const dataLength = data.length;
   const rowLength = width * 4;
   const scaledRowLength = currentScale * rowLength;

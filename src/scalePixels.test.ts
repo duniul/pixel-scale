@@ -94,6 +94,16 @@ describe(scalePixels, () => {
     expect(result.width).toBe(expected.width);
     expect(result.height).toBe(expected.height);
   });
+
+  it('returns a clone when `to` equals the current scale', () => {
+    const result = scalePixels(imageData.scale5, 5, { from: 5 });
+
+    expect(result).not.toBe(imageData.scale5);
+    expect(result.data).not.toBe(imageData.scale5.data);
+    expect(result.data.join(',')).toBe(imageData.scale5.data.join(','));
+    expect(result.width).toBe(imageData.scale5.width);
+    expect(result.height).toBe(imageData.scale5.height);
+  });
 });
 
 describe(multiplyPixelScale, () => {
