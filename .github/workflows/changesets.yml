@@ -7,7 +7,6 @@ on:
       - main
     paths-ignore:
       - '.vscode/**'
-      - 'demo/**'
       - '*.md'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
