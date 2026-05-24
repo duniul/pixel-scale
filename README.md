@@ -20,7 +20,6 @@ art!
 
 ## Table of contents
 
-- [Demo](#demo)
 - [Installation](#installation)
 - [Usage](#usage)
   - [`scalePixels(imageData, to, options)`](#scalepixelsimagedata-to-options)
@@ -31,10 +30,6 @@ art!
   - [ImageData](#imagedata)
   - [Pixel scale](#pixel-scale-1)
   - [How does it work?](#how-does-it-work)
-
-## Demo
-
-https://pixel-scale.netlify.app
 
 ## Installation
 
