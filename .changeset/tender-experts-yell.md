@@ -2,4 +2,4 @@
 'pixel-scale': patch
 ---
 
-Ensure `from` is used in `multiplyPixelScale` and `dividePixelScale`.
+Fix `multiplyPixelScale` and `dividePixelScale` ignoring `options.from`.

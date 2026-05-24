@@ -2,4 +2,4 @@
 'pixel-scale': patch
 ---
 
-Set `"sideEffects": false"` in package.json.
+Mark the package as side-effect free for better tree-shaking.

@@ -2,4 +2,4 @@
 'pixel-scale': patch
 ---
 
-Fix early exit when there's only one possible scale.
+Fix early exit in `getPixelScale` when only one scale is possible.
