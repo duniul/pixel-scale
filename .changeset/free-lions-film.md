@@ -2,4 +2,4 @@
 'pixel-scale': major
 ---
 
-BREAKING Input is now validated and rejects early if invalid.
+**BREAKING** Validate all inputs and throw `TypeError`/`RangeError` early on invalid arguments.
