@@ -1,13 +1,9 @@
-// oxlint-disable typescript/no-explicit-any
-import IsomorphicImageData from '@canvas/image-data';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { getPixelTheCatScale1, getPixelTheCatScale10, getPixelTheCatScale5 } from '../test/testImageData.js';
 import { getPixelScale } from './getPixelScale.js';
 import { dividePixelScale, multiplyPixelScale, scalePixels } from './scalePixels.js';
 
 vi.setConfig({ testTimeout: 5000 });
-
-globalThis.ImageData = IsomorphicImageData as any;
 
 const imageData = {
   scale1: [] as unknown as ImageData,
