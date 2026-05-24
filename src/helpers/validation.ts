@@ -9,6 +9,14 @@ export function assertMinInteger(value: unknown, min: number, name: string): ass
   }
 }
 
+/**
+ * Asserts at runtime that `imageData` conforms to {@link ImageDataLike}: an
+ * object with a 4-byte-aligned `Uint8ClampedArray` `data` of length
+ * `width * height * 4`, plus positive integer `width` and `height`.
+ *
+ * @param imageData - The value to validate.
+ * @param name - Label used in error messages to identify the argument.
+ */
 export function assertValidImageData(
   imageData: unknown,
   name = 'imageData'

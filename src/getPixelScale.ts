@@ -91,6 +91,14 @@ function isValidScale(data32: Uint32Array, width: number, scale: number, maxColo
   return true;
 }
 
+/**
+ * Detects the pixel scale of an image. Selects the largest scale for which
+ * every `scale × scale` block of pixels is a solid color.
+ *
+ * @param imageData - The image data to inspect.
+ * @param options - Optional detection settings.
+ * @returns The detected pixel scale (a positive integer, always ≥ 1).
+ */
 export function getPixelScale(
   imageData: ImageDataLike,
   options?: GetPixelScaleOptions | undefined | null
