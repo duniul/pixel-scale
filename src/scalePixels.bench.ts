@@ -1,10 +1,6 @@
-// oxlint-disable typescript/no-explicit-any
-import IsomorphicImageData from '@canvas/image-data';
 import { bench, describe } from 'vitest';
 import { getPixelTheCatScale1 } from '../test/testImageData.js';
 import { scalePixels } from './scalePixels.js';
-
-globalThis.ImageData = IsomorphicImageData as any;
 
 const scale1 = await getPixelTheCatScale1();
 
