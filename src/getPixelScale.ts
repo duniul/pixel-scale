@@ -1,4 +1,5 @@
 import { findCommonDivisors } from './helpers/commonDivisors.js';
+import { assertMinInteger, assertValidImageData } from './helpers/validation.js';
 import type { GetPixelScaleOptions, ImageDataLike } from './types.js';
 
 /**
@@ -94,7 +95,9 @@ export function getPixelScale(
   imageData: ImageDataLike,
   options?: GetPixelScaleOptions | undefined | null
 ): number {
+  assertValidImageData(imageData);
   const { maxColorDiff = 0 } = options || {};
+  assertMinInteger(maxColorDiff, 0, 'options.maxColorDiff');
   const { data, width, height } = imageData;
   const possibleScales = findCommonDivisors(width, height);
 

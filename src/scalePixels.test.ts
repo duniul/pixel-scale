@@ -146,3 +146,91 @@ describe(dividePixelScale, () => {
     }
   );
 });
+
+function makeImageData(width: number, height: number): ImageData {
+  return new ImageData(new Uint8ClampedArray(width * height * 4), width, height);
+}
+
+describe('input validation', () => {
+  describe(scalePixels, () => {
+    it('rejects an invalid imageData', () => {
+      expect(() => scalePixels(null as any, 2)).toThrow(TypeError);
+      expect(() => scalePixels({ width: 2, height: 2, data: new Uint8ClampedArray(4) } as any, 2)).toThrow(
+        RangeError
+      );
+    });
+
+    it('rejects a non-positive-integer `to`', () => {
+      const id = makeImageData(2, 2);
+      expect(() => scalePixels(id, 0)).toThrow(RangeError);
+      expect(() => scalePixels(id, -1)).toThrow(RangeError);
+      expect(() => scalePixels(id, 1.5)).toThrow(RangeError);
+      expect(() => scalePixels(id, '2' as any)).toThrow(TypeError);
+    });
+
+    it('rejects an invalid `options.from`', () => {
+      const id = makeImageData(4, 4);
+      expect(() => scalePixels(id, 2, { from: 0 })).toThrow(RangeError);
+      expect(() => scalePixels(id, 2, { from: -2 })).toThrow(RangeError);
+      expect(() => scalePixels(id, 2, { from: 1.5 })).toThrow(RangeError);
+    });
+
+    it('rejects an invalid `options.maxColorDiff`', () => {
+      const id = makeImageData(4, 4);
+      expect(() => scalePixels(id, 2, { from: 1, maxColorDiff: -1 })).toThrow(RangeError);
+      expect(() => scalePixels(id, 2, { from: 1, maxColorDiff: 0.5 })).toThrow(RangeError);
+      // 0 is allowed
+      expect(() => scalePixels(id, 1, { from: 1, maxColorDiff: 0 })).not.toThrow();
+    });
+
+    it('rejects when `from` does not evenly divide the image dimensions', () => {
+      const id = makeImageData(10, 10);
+      expect(() => scalePixels(id, 2, { from: 3 })).toThrow(RangeError);
+    });
+  });
+
+  describe(multiplyPixelScale, () => {
+    it('rejects an invalid imageData', () => {
+      expect(() => multiplyPixelScale(null as any, 2)).toThrow(TypeError);
+    });
+
+    it('rejects a non-positive-integer multiplier', () => {
+      const id = makeImageData(2, 2);
+      expect(() => multiplyPixelScale(id, 0, { from: 1 })).toThrow(RangeError);
+      expect(() => multiplyPixelScale(id, -1, { from: 1 })).toThrow(RangeError);
+      expect(() => multiplyPixelScale(id, 1.5, { from: 1 })).toThrow(RangeError);
+      expect(() => multiplyPixelScale(id, '2' as any, { from: 1 })).toThrow(TypeError);
+    });
+
+    it('rejects invalid options', () => {
+      const id = makeImageData(2, 2);
+      expect(() => multiplyPixelScale(id, 2, { from: 0 })).toThrow(RangeError);
+      expect(() => multiplyPixelScale(id, 2, { from: 1, maxColorDiff: -1 })).toThrow(RangeError);
+    });
+  });
+
+  describe(dividePixelScale, () => {
+    it('rejects an invalid imageData', () => {
+      expect(() => dividePixelScale(null as any, 2)).toThrow(TypeError);
+    });
+
+    it('rejects a non-positive-integer divider', () => {
+      const id = makeImageData(2, 2);
+      expect(() => dividePixelScale(id, 0, { from: 2 })).toThrow(RangeError);
+      expect(() => dividePixelScale(id, -1, { from: 2 })).toThrow(RangeError);
+      expect(() => dividePixelScale(id, 1.5, { from: 2 })).toThrow(RangeError);
+      expect(() => dividePixelScale(id, '2' as any, { from: 2 })).toThrow(TypeError);
+    });
+
+    it('rejects when divider does not evenly divide `from`', () => {
+      const id = makeImageData(6, 6);
+      expect(() => dividePixelScale(id, 4, { from: 6 })).toThrow(RangeError);
+    });
+
+    it('rejects invalid options', () => {
+      const id = makeImageData(2, 2);
+      expect(() => dividePixelScale(id, 1, { from: -2 })).toThrow(RangeError);
+      expect(() => dividePixelScale(id, 1, { from: 2, maxColorDiff: -1 })).toThrow(RangeError);
+    });
+  });
+});

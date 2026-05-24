@@ -1,4 +1,5 @@
-import { beforeAll, expect, it, vi } from 'vitest';
+// oxlint-disable typescript/no-explicit-any
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import {
   getPixelTheCatScale1,
   getPixelTheCatScale5,
@@ -50,4 +51,21 @@ it('returns full width of square, single color images', () => {
   expect.hasAssertions();
 
   expect(getPixelScale(imageData.whiteSquare)).toBe(100);
+});
+
+describe('input validation', () => {
+  it('rejects an invalid imageData', () => {
+    expect(() => getPixelScale(null as any)).toThrow(TypeError);
+    expect(() => getPixelScale({ width: 2, height: 2, data: new Uint8ClampedArray(4) } as any)).toThrow(
+      RangeError
+    );
+  });
+
+  it('rejects an invalid maxColorDiff', () => {
+    expect(() => getPixelScale(imageData.scale1ImageData, { maxColorDiff: -1 })).toThrow(RangeError);
+    expect(() => getPixelScale(imageData.scale1ImageData, { maxColorDiff: 0.5 })).toThrow(RangeError);
+    expect(() => getPixelScale(imageData.scale1ImageData, { maxColorDiff: '0' as any })).toThrow(TypeError);
+    // 0 is allowed
+    expect(() => getPixelScale(imageData.scale1ImageData, { maxColorDiff: 0 })).not.toThrow();
+  });
 });
