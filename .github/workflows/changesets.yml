@@ -7,13 +7,17 @@ on:
       - main
     paths-ignore:
       - '.vscode/**'
+      - '.gitattributes'
+      - '.gitignore'
       - '*.md'
+      - 'LICENSE'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
   contents: write
   pull-requests: write
+  id-token: write
 
 jobs:
   main:
@@ -21,15 +25,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: 🏗 Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: 🏗 Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 18.x
+          node-version: 22.x
           cache: pnpm
 
       - name: 📦 Install dependencies
@@ -45,4 +49,3 @@ jobs:
           publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
