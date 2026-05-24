@@ -1,6 +1,6 @@
 {
   "name": "pixel-scale",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Get the pixel scale of an image, or scale it up or down without quality loss. Useful for pixel art!",
   "keywords": [
     "canvas",
