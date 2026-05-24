@@ -1,3 +1,4 @@
+// oxlint-disable typescript/no-explicit-any
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { getPixelTheCatScale1, getPixelTheCatScale10, getPixelTheCatScale5 } from '../test/testImageData.js';
 import { getPixelScale } from './getPixelScale.js';
@@ -150,6 +151,7 @@ function makeImageData(width: number, height: number): ImageData {
 describe('input validation', () => {
   describe(scalePixels, () => {
     it('rejects an invalid imageData', () => {
+      // oxlint-disable-next-line typescript/no-explicit-any
       expect(() => scalePixels(null as any, 2)).toThrow(TypeError);
       expect(() => scalePixels({ width: 2, height: 2, data: new Uint8ClampedArray(4) } as any, 2)).toThrow(
         RangeError
