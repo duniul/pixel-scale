@@ -2,8 +2,7 @@ import { beforeAll, expect, it, vi } from 'vitest';
 import {
   getPixelTheCatScale1,
   getPixelTheCatScale5,
-  getPixelTheCatScale32,
-  getVectorAvatar,
+  getPixelTheCatScale10,
   getWhiteSquareScale100,
 } from '../test/testImageData.js';
 import { getPixelScale } from './getPixelScale.js';
@@ -13,8 +12,7 @@ vi.setConfig({ testTimeout: 5000 });
 const imageData = {
   scale1ImageData: [] as unknown as ImageData,
   scale5ImageData: [] as unknown as ImageData,
-  scale32ImageData: [] as unknown as ImageData,
-  vectorAvatar: [] as unknown as ImageData,
+  scale10ImageData: [] as unknown as ImageData,
   whiteSquare: [] as unknown as ImageData,
 };
 
@@ -28,12 +26,8 @@ beforeAll(async () => {
       imageData.scale5ImageData = p;
       return p;
     }),
-    getPixelTheCatScale32().then(p => {
-      imageData.scale32ImageData = p;
-      return p;
-    }),
-    getVectorAvatar().then(p => {
-      imageData.vectorAvatar = p;
+    getPixelTheCatScale10().then(p => {
+      imageData.scale10ImageData = p;
       return p;
     }),
     getWhiteSquareScale100().then(p => {
@@ -49,8 +43,7 @@ it('returns the correct pixel scale', () => {
 
   expect(getPixelScale(imageData.scale1ImageData)).toBe(1);
   expect(getPixelScale(imageData.scale5ImageData)).toBe(5);
-  expect(getPixelScale(imageData.scale32ImageData)).toBe(32);
-  expect(getPixelScale(imageData.vectorAvatar)).toBe(1);
+  expect(getPixelScale(imageData.scale10ImageData)).toBe(10);
 });
 
 it('returns full width of square, single color images', () => {

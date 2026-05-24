@@ -15,6 +15,5 @@ async function getTestImageData(imageName: string): Promise<ImageData> {
 
 export const getPixelTheCatScale1 = (): Promise<ImageData> => getTestImageData('pixel-the-cat_x1.png');
 export const getPixelTheCatScale5 = (): Promise<ImageData> => getTestImageData('pixel-the-cat_x5.png');
-export const getPixelTheCatScale32 = (): Promise<ImageData> => getTestImageData('pixel-the-cat_x32.png');
+export const getPixelTheCatScale10 = (): Promise<ImageData> => getTestImageData('pixel-the-cat_x10.png');
 export const getWhiteSquareScale100 = (): Promise<ImageData> => getTestImageData('white-square_x100.png');
-export const getVectorAvatar = (): Promise<ImageData> => getTestImageData('vector-avatar.png');
