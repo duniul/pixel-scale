@@ -1,7 +1,7 @@
 // oxlint-disable typescript/no-explicit-any
 import IsomorphicImageData from '@canvas/image-data';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
-import { getPixelTheCatScale1, getPixelTheCatScale32, getPixelTheCatScale5 } from '../test/testImageData.js';
+import { getPixelTheCatScale1, getPixelTheCatScale10, getPixelTheCatScale5 } from '../test/testImageData.js';
 import { getPixelScale } from './getPixelScale.js';
 import { dividePixelScale, multiplyPixelScale, scalePixels } from './scalePixels.js';
 
@@ -12,7 +12,7 @@ globalThis.ImageData = IsomorphicImageData as any;
 const imageData = {
   scale1: [] as unknown as ImageData,
   scale5: [] as unknown as ImageData,
-  scale32: [] as unknown as ImageData,
+  scale10: [] as unknown as ImageData,
 };
 
 beforeAll(async () => {
@@ -25,8 +25,8 @@ beforeAll(async () => {
       imageData.scale5 = p;
       return p;
     }),
-    getPixelTheCatScale32().then(p => {
-      imageData.scale32 = p;
+    getPixelTheCatScale10().then(p => {
+      imageData.scale10 = p;
       return p;
     }),
   ]);
@@ -47,17 +47,17 @@ describe(scalePixels, () => {
     expect(result.width).toBe(expected.width);
     expect(result.height).toBe(expected.height);
 
-    // x1 to x32
-    expected = imageData.scale32;
-    result = scalePixels(imageData.scale1, 32, { from: 1 });
+    // x1 to x10
+    expected = imageData.scale10;
+    result = scalePixels(imageData.scale1, 10, { from: 1 });
     expect(result.data).toHaveLength(expected.width * expected.height * 4);
     expect(result.data.join(',')).toStrictEqual(expected.data.join(','));
     expect(result.width).toBe(expected.width);
     expect(result.height).toBe(expected.height);
 
-    // x5 to x32
-    expected = imageData.scale32;
-    result = scalePixels(imageData.scale5, 32, { from: 5 });
+    // x5 to x10
+    expected = imageData.scale10;
+    result = scalePixels(imageData.scale5, 10, { from: 5 });
     expect(result.data).toHaveLength(expected.width * expected.height * 4);
     expect(result.data.join(',')).toStrictEqual(expected.data.join(','));
     expect(result.width).toBe(expected.width);
@@ -70,17 +70,17 @@ describe(scalePixels, () => {
     let expected: ImageData;
     let result: ImageData;
 
-    // x32 to x5
+    // x10 to x5
     expected = imageData.scale5;
-    result = scalePixels(imageData.scale32, 5, { from: 32 });
+    result = scalePixels(imageData.scale10, 5, { from: 10 });
     expect(result.data).toHaveLength(expected.width * expected.height * 4);
     expect(result.data.join(',')).toStrictEqual(expected.data.join(','));
     expect(result.width).toBe(expected.width);
     expect(result.height).toBe(expected.height);
 
-    // x32 to x1
+    // x10 to x1
     expected = imageData.scale1;
-    result = scalePixels(imageData.scale32, 1, { from: 32 });
+    result = scalePixels(imageData.scale10, 1, { from: 10 });
     expect(result.data).toHaveLength(expected.width * expected.height * 4);
     expect(result.data.join(',')).toStrictEqual(expected.data.join(','));
     expect(result.width).toBe(expected.width);
@@ -100,7 +100,7 @@ describe(multiplyPixelScale, () => {
   it.each([
     { startScale: 'scale1', multiplier: 6 },
     { startScale: 'scale5', multiplier: 4 },
-    { startScale: 'scale32', multiplier: 2 },
+    { startScale: 'scale10', multiplier: 2 },
   ] as const)(
     'multiplies pixel scale (from: $startScale, multiplier: $multiplier)',
     async ({ startScale, multiplier }) => {
@@ -120,7 +120,7 @@ describe(multiplyPixelScale, () => {
 describe(dividePixelScale, () => {
   it.each([
     { startScale: 'scale5', divider: 5 },
-    { startScale: 'scale32', divider: 8 },
+    { startScale: 'scale10', divider: 5 },
   ] as const)(
     'divides pixel scale (from: $startScale, divider: $divider)',
     async ({ startScale, divider }) => {
